@@ -8,6 +8,7 @@ using TestCompany.Core.Entities;
 
 namespace TestCompany.Core.DataAccess.EntityFramewrok
 {
+    //Unit of Work yapısına örnek TContext yapısı.
     public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()

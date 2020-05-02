@@ -7,7 +7,7 @@ using TestCompany.OnlineShopping.Entities.Concrete;
 
 namespace TestCompany.OnlineShopping.DataAccess.Concrete.EntityFramework
 {
-    class EfProductDal:EfEntityRepositoryBase<Product,NorthwindContext>,IProductDal
+    public class EfProductDal:EfEntityRepositoryBase<Product,NorthwindContext>,IProductDal
     {
     }
 }

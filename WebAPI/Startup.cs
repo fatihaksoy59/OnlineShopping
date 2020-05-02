@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TestCompany.OnlineShopping.Business.Abstract;
+using TestCompany.OnlineShopping.Business.Concrete;
+using TestCompany.OnlineShopping.DataAccess.Abstract;
+using TestCompany.OnlineShopping.DataAccess.Concrete.EntityFramework;
 
 namespace WebAPI
 {
@@ -25,6 +29,8 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IProductService, ProductManager>();
+            services.AddSingleton<IProductDal, EfProductDal>();
             services.AddControllers();
         }
 

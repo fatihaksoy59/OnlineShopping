@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TestCompany.OnlineShopping.DataAccess\TestCompany.OnlineShopping.DataAccess.csproj" />
     <ProjectReference Include="..\TestCompany.OnlineShopping.Entities\TestCompany.OnlineShopping.Entities.csproj" />
   </ItemGroup>

@@ -19,6 +19,7 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
+        [HttpGet("getall")]
         public IActionResult GetList()
         {
             return Ok(_productService.GetAll());

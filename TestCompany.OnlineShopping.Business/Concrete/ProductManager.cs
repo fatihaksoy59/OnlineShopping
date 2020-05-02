@@ -7,7 +7,7 @@ using TestCompany.OnlineShopping.Entities.Concrete;
 
 namespace TestCompany.OnlineShopping.Business.Concrete
 {
-    class ProductManager : IProductService
+    public class ProductManager : IProductService
     {
         IProductDal _productDal;
 
