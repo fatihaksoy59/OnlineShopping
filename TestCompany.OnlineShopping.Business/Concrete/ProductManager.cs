@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TestCompany.Core.Aspects.Postsharp;
 using TestCompany.OnlineShopping.Business.Abstract;
+using TestCompany.OnlineShopping.Business.ValidationRules.FluentValidation;
 using TestCompany.OnlineShopping.DataAccess.Abstract;
 using TestCompany.OnlineShopping.Entities.Concrete;
 
@@ -16,6 +18,8 @@ namespace TestCompany.OnlineShopping.Business.Concrete
             _productDal = productDal;
         }
 
+        //Aspect yazmak deniyor buna. Methodun başında çalışacak Aspect yazdık.
+        [FluentValidationAspect(typeof(ProductValidator))]
         public void Add(Product product)
         {
             _productDal.Add(product);
