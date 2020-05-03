@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using TestCompany.Core.CrossCuttingConcerns.Validation.FluentValidation;
 
-namespace TestCompany.Core.Aspects.Postsharp
+namespace TestCompany.Core.Aspects.Postsharp.ValidationAspects
 {
     [Serializable]
-    public class FluentValidationAspect:OnMethodBoundaryAspect
+    public class FluentValidationAspect : OnMethodBoundaryAspect
     {
         Type _validatorType;
         public FluentValidationAspect(Type validatorType)
@@ -22,7 +22,7 @@ namespace TestCompany.Core.Aspects.Postsharp
             var entityType = _validatorType.BaseType.GetGenericArguments()[0];
             var entities = args.Arguments.Where(t => t.GetType() == entityType);
 
-            foreach(var entity in entities)
+            foreach (var entity in entities)
             {
                 ValidatorTool.FluentValidate(validator, entity);
             }

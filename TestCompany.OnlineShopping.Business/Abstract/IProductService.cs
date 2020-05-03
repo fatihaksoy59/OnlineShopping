@@ -12,5 +12,6 @@ namespace TestCompany.OnlineShopping.Business.Abstract
         void Add(Product product);
         void Update(Product product);
         void Delete(Product product);
+        void TransactionalOperation(Product product1, Product product2);
     }
 }

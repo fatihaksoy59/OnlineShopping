@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TestCompany.Core.Aspects.Postsharp;
+﻿using System.Collections.Generic;
+using TestCompany.Core.Aspects.Postsharp.LogAspects;
+using TestCompany.Core.Aspects.Postsharp.TransactionAspects;
+using TestCompany.Core.Aspects.Postsharp.ValidationAspects;
+using TestCompany.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using TestCompany.OnlineShopping.Business.Abstract;
 using TestCompany.OnlineShopping.Business.ValidationRules.FluentValidation;
 using TestCompany.OnlineShopping.DataAccess.Abstract;
@@ -35,6 +36,7 @@ namespace TestCompany.OnlineShopping.Business.Concrete
             _productDal.Update(product);
         }
 
+        [LogAspect(typeof(DatabaseLogger))]
         public List<Product> GetAll()
         {
             return _productDal.GetList();
@@ -43,6 +45,14 @@ namespace TestCompany.OnlineShopping.Business.Concrete
         public List<Product> GetByCategory(int categoryId)
         {
             return _productDal.GetList(p=>p.CategoryID==categoryId);
+        }
+
+        [TransactionScopeAspect]
+        public void TransactionalOperation(Product product1, Product product2)
+        {
+            _productDal.Add(product1);
+            //Business kodları
+            _productDal.Add(product2);
         }
     }
 }
